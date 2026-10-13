@@ -2,11 +2,10 @@ local CFG = getgenv().CFG or {}
 getgenv().CFG = CFG
 
 local GAMES = {
-    [109341816] = "mm2",
-    -- voeg hier nieuwe games toe: [UNIVERSE_ID] = "naam"
+    [142823291] = "mm2",
 }
 
-local game_name = GAMES[game.GameId]
+local game_name = GAMES[game.PlaceId]
 
 if not game_name then
     game:GetService("Players").LocalPlayer:Kick("Game not supported.")
