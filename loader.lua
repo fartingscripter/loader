@@ -1,3 +1,5 @@
+print = function() end
+warn = function() end
 local CFG = getgenv().CFG or {}
 getgenv().CFG = CFG
 
